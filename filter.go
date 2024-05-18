@@ -2,12 +2,13 @@ package sequence
 
 // Returns a new slice of the same type containing, in order, the elements of the original collection that satisfy the given test.
 func Filter[T ~[]In, In any](ss T, test func(In) bool) (ret T) {
+	result := make(T, 0, len(ss))
 	for _, s := range ss {
 		if test(s) {
 			ret = append(ret, s)
 		}
 	}
-	return
+	return result
 }
 
 // Returns the first element of the sequence that satisfies the given test. Functionally equivalent to calling Filter(ss, func(T) bool)[0].
